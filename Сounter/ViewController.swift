@@ -11,8 +11,8 @@ class ViewController: UIViewController {
     
     private var count = 0
     
-    @IBOutlet weak var countLabel: UILabel!
-    @IBOutlet weak var historyTextView: UITextView!
+    @IBOutlet private weak var countLabel: UILabel!
+    @IBOutlet private weak var historyTextView: UITextView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -42,14 +42,14 @@ class ViewController: UIViewController {
         }
     }
 
-    @IBAction func plusButton(_ sender: UIButton) {
+    @IBAction private func plusButton(_ sender: UIButton) {
         guard let sender = sender.titleLabel?.text else { return }
         let time = currentTime()
         counter(sender: sender)
         historyTextView.text += "\n\(time): значение изменено на \(sender)1"
     }
     
-    @IBAction func minusButton(_ sender: UIButton) {
+    @IBAction private func minusButton(_ sender: UIButton) {
         guard let sender = sender.titleLabel?.text else { return }
         let time = currentTime()
         if count > 0 {
@@ -60,7 +60,7 @@ class ViewController: UIViewController {
         }
     }
     
-    @IBAction func clearButton(_ sender: UIButton) {
+    @IBAction private func clearButton(_ sender: UIButton) {
         count = 0
         let time = currentTime()
         countLabel.text = "Значение счётчика: \(count)"
